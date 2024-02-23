@@ -81,7 +81,15 @@ export function SwitchCutoutPane() {
             <h4>Futaba MA</h4>
             <p>14 x 15 mm</p>
             <p>For Futaba MA mechanical switches.</p>
-            
+            <h4>Topre/EC OEM</h4>
+            <p>(1u) 14.6mm * 14mm</p>
+            <p>(2u) 32mm * 13.95mm</p>
+            <p>For standard, OEM Topre/EC housings (note: not for RGB Realforce or similar). <br />
+                These also support Densus/KLC Playground's housings.</p>
+            <h4>Topre/EC Deskeys</h4>
+            <p>(1u) 14.7 x 14.1mm</p>
+            <p>(2u) 32.1 x 14.1mm</p>
+            <p>For Topre/Electro Capacitive switch housings produced by Deskeys. These cutouts are recommended by them.</p>
         </div>
     )
 }
@@ -116,6 +124,9 @@ export function OtherCutoutPane() {
             <br />
             <h4>Cherry MX Extreme</h4>
             <p>A larger amount of acoustic cuts.</p>
+            <h4>Topre/EC (Deskeys)</h4>
+            <p>For Topre/Electro Capacitive spacebar stabilizer housings produced by Deskeys. Note: These cutouts are slightly larger than the housings themselves, as recommended by Deskeys.<br />
+                The dimensions of the housings are 13.4 x 13.5mm, and their cutouts are 13.5 x 13.6mm </p>
         </div>
     )
 }
@@ -155,7 +166,9 @@ export function AboutPane() {
                 Bakingpy<br />
                 Senter<br />
                 Pwner<br />
-                Kevinplus</p>
+                Kevinplus<br />
+                Densus<br />
+                Clever</p>
                 <br/>
             <h4>Contributing</h4>
             <p>Please visit the <a href="https://github.com/ai03-2725/yet-another-keyboard-builder">source repository</a> for more info.</p>

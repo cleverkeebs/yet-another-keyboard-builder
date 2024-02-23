@@ -10,16 +10,21 @@ import { SwitchOmronB3G } from './cutouts/SwitchOmronB3G'
 import { SwitchHiTek725 } from './cutouts/SwitchHiTek725'
 import { SwitchIRocks } from './cutouts/SwitchIRocks'
 import { SwitchFutabaMA } from './cutouts/SwitchFutabaMA'
+import { SwitchECTopreOEM } from './cutouts/SwitchECTopreOEM'
+import { SwitchECTopreDeskeys } from './cutouts/SwitchECTopreDeskeys'
 
 import { StabilizerMXBasic } from './cutouts/StabilizerMXBasic'
 import { StabilizerMXSmall } from './cutouts/StabilizerMXSmall'
 import { StabilizerMXSpec } from './cutouts/StabilizerMXSpec'
 import { StabilizerAlpsAEK } from './cutouts/StabilizerAlpsAEK'
 import { StabilizerAlpsAT101 } from './cutouts/StabilizerAlpsAT101'
+import { StabilizerECTopreOEM } from './cutouts/StabilizerECTopreOEM'
+import { StabilizerECTopreDeskeys } from './cutouts/StabilizerECTopreDeskeys'
 import { NullGenerator } from './cutouts/NullGenerator'
 
 import { AcousticMXBasic } from './cutouts/AcousticMXBasic'
 import { AcousticMXExtreme } from './cutouts/AcousticMXExtreme'
+
 
 
 export function buildPlate(keysArray, generatorOptions) {
@@ -63,6 +68,11 @@ export function buildPlate(keysArray, generatorOptions) {
         case "futaba-ma":
             switchGenerator = new SwitchFutabaMA();
             break;
+        case "ec-oem":
+            switchGenerator = new SwitchECTopreOEM();
+        case "ec-deskeys":
+            switchGenerator = new SwitchECTopreDeskeys();
+            break;
         default:
             console.error("Unsupported switch type")
             return null
@@ -84,6 +94,12 @@ export function buildPlate(keysArray, generatorOptions) {
             break;
         case "alps-at101":
             stabilizerGenerator = new StabilizerAlpsAT101();
+            break;
+        case "ec-oem":
+            stabilizerGenerator = new StabilizerECTopreOEM();
+            break;
+        case "ec-deskeys":
+            stabilizerGenerator = new StabilizerECTopreDeskeys();
             break;
         case "none":
             stabilizerGenerator = new NullGenerator();
