@@ -70,6 +70,7 @@ export function buildPlate(keysArray, generatorOptions) {
             break;
         case "ec-oem":
             switchGenerator = new SwitchECTopreOEM();
+            break;
         case "ec-deskeys":
             switchGenerator = new SwitchECTopreDeskeys();
             break;
