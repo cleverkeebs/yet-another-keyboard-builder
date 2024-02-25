@@ -81,7 +81,7 @@ export class SwitchECTopreOEM extends CutoutGenerator {
         
 
         if (!key.skipOrientationFix && key.height > key.width) {
-            model = makerjs.model.rotate(model, -90)
+            model = makerjs.model.rotate(model, 90)
         } 
         
         return model;
