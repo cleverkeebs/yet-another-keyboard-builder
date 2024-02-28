@@ -79,8 +79,8 @@ export class SwitchECTopreOEM extends CutoutGenerator {
                 lineBottom: new makerjs.paths.Line(bottomRight2, bottomLeft1),
                 lineBottomLeft: new makerjs.paths.Line(bottomLeft1, bottomLeft2),
                 lineLeft: new makerjs.paths.Line(bottomLeft2, topLeft1),
-                mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, 1) : null,
-                mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, 1) : null
+                mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, .8) : null,
+                mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
             }
         }
         

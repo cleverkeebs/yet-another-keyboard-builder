@@ -17,7 +17,7 @@ export class SwitchECTopreDeskeys extends CutoutGenerator {
 
     generate(key, generatorOptions) {
         // EC switch cutouts are chamfered instead of filleted. Numerals 1 & 2 are used for signifying chamfers in clockwise order.
-        let plusHalfWidth, minsHalfWidth, plusHalfHeight, minsHalfHeight, topLeft1, topLeft2, topRight1, topRight2, bottomRight1, bottomRight2, bottomLeft1, bottomLeft2
+        let plusHalfWidth, minsHalfWidth, plusHalfHeight, minsHalfHeight, topLeft1, topLeft2, topRight1, topRight2, bottomRight1, bottomRight2, bottomLeft1, bottomLeft2, mountingPointLeft, mountingPointRight
         var model
 
         // 1u housing
@@ -67,6 +67,9 @@ export class SwitchECTopreDeskeys extends CutoutGenerator {
             bottomRight2 = [plusHalfWidth.minus(generatorOptions.kerf).minus(chamfer2uBottomX).toNumber(), minsHalfHeight.plus(generatorOptions.kerf).toNumber()]
             bottomLeft1 = [minsHalfWidth.plus(generatorOptions.kerf).plus(chamfer2uBottomX).toNumber(), minsHalfHeight.plus(generatorOptions.kerf).toNumber()]
             bottomLeft2 = [minsHalfWidth.plus(generatorOptions.kerf).toNumber(), minsHalfHeight.plus(generatorOptions.kerf).plus(chamfer2uBottomY).toNumber()]
+
+            mountingPointLeft = [plusHalfWidth.plus(0.1512).toNumber(), minsHalfHeight.minus(0.1469).toNumber()]
+            mountingPointRight = [minsHalfWidth.minus(0.1512).toNumber(), minsHalfHeight.minus(0.1469).toNumber()]
         }
 
 
@@ -79,7 +82,9 @@ export class SwitchECTopreDeskeys extends CutoutGenerator {
                 lineBottomRight: new makerjs.paths.Line(bottomRight1, bottomRight2),
                 lineBottom: new makerjs.paths.Line(bottomRight2, bottomLeft1),
                 lineBottomLeft: new makerjs.paths.Line(bottomLeft1, bottomLeft2),
-                lineLeft: new makerjs.paths.Line(bottomLeft2, topLeft1)
+                lineLeft: new makerjs.paths.Line(bottomLeft2, topLeft1),
+                mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, .8) : null,
+                mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
             }
         }
         
