@@ -49,7 +49,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
             }
 
             // Apply the fillet radius (replace chamfer1u with fillet)
-            makerjs.path.combineFillet(model.models.outline, fillet1u.toNumber());
+            makerjs.path.fillet(model.models.outline, fillet1u.toNumber());
         }
 
         // 2u housing
