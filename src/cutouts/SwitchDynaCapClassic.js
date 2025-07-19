@@ -17,7 +17,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
 
     generate(key, generatorOptions) {
         // EC switch cutouts are chamfered instead of filleted. Numerals 1 & 2 are used for signifying chamfers in clockwise order.
-        let topLeft, topRight, bottomRight, bottomLeft
+        let points
         let plusHalfWidth, minsHalfWidth, plusHalfHeight, minsHalfHeight, topLeft1, topLeft2, topRight1, topRight2, bottomRight1, bottomRight2, bottomLeft1, bottomLeft2, mountingPointLeft, mountingPointRight
         var model
 
@@ -43,18 +43,17 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
             plusHalfHeight = height1u.dividedBy(new Decimal("2"))
             minsHalfHeight = height1u.dividedBy(new Decimal("-2"))
 
-            topLeft = [minsHalfWidth.toNumber(), plusHalfHeight.toNumber()]
-            topRight = [plusHalfWidth.toNumber(), plusHalfHeight.toNumber()]
-            bottomRight = [plusHalfWidth.toNumber(), minsHalfHeight.toNumber()]
-            bottomLeft = [minsHalfWidth.toNumber(), minsHalfHeight.toNumber()]
+            points = [
+              [minsHalfWidth.toNumber(), plusHalfHeight.toNumber()],
+              [plusHalfWidth.toNumber(), plusHalfHeight.toNumber()],
+              [plusHalfWidth.toNumber(), minsHalfHeight.toNumber()],
+              [minsHalfWidth.toNumber(), minsHalfHeight.toNumber()]
+            ]
 
             model = {
-                paths: {
-                    lineTop: new makerjs.paths.Line(topLeft, topRight),
-                    lineRight: new makerjs.paths.Line(topRight, bottomRight),
-                    lineBottom: new makerjs.paths.Line(bottomRight, bottomLeft),
-                    lineLeft: new makerjs.paths.Line(bottomLeft, topLeft)
-                }
+              models: {
+                outline: makerjs.model.connectTheDots(false, points)
+              }
             }
 
             // Apply the fillet radius (replace chamfer1u with fillet)
