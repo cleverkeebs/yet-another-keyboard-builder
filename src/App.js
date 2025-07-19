@@ -150,8 +150,9 @@ function App() {
                   <option value="hitek-725">Hi-Tek 725</option>
                   <option value="i-rocks">i-Rocks</option>
                   <option value="futaba-ma">Futaba MA</option>
-                  <option value="ec-oem">Topre/EC OEM</option>
-                  <option value="ec-deskeys">Topre/EC Deskeys</option>
+                  <option value="ec-oem">EC/Topre OEM</option>
+                  <option value="ec-deskeys">EC/Deskeys</option>
+                  <option value="dynacap-classic">EC/DynaCap</option>
 
                 </Form.Select>
                 <Form.Label>Stabilizer Cutout Type</Form.Label>
