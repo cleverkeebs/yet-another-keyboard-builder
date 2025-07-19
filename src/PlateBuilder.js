@@ -12,6 +12,7 @@ import { SwitchIRocks } from './cutouts/SwitchIRocks'
 import { SwitchFutabaMA } from './cutouts/SwitchFutabaMA'
 import { SwitchECTopreOEM } from './cutouts/SwitchECTopreOEM'
 import { SwitchECTopreDeskeys } from './cutouts/SwitchECTopreDeskeys'
+import { SwitchDynaCapClassic } from './cutouts/SwitchDynaCapClassic'
 
 import { StabilizerMXBasic } from './cutouts/StabilizerMXBasic'
 import { StabilizerMXSmall } from './cutouts/StabilizerMXSmall'
@@ -73,6 +74,9 @@ export function buildPlate(keysArray, generatorOptions) {
             break;
         case "ec-deskeys":
             switchGenerator = new SwitchECTopreDeskeys();
+            break;
+        case "dynacap-classic":
+            switchGenerator = new SwitchDynaCapClassic();
             break;
         default:
             console.error("Unsupported switch type")

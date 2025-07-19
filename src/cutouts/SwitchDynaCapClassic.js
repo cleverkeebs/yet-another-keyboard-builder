@@ -13,7 +13,7 @@ import { CutoutGenerator } from './CutoutGenerator'
  * 2u stab: 32.1mm * 14.1mm
  */
 
-export class SwitchECTopreDeskeys extends CutoutGenerator {
+export class SwitchDynaCapClassic extends CutoutGenerator {
 
     generate(key, generatorOptions) {
         // EC switch cutouts are chamfered instead of filleted. Numerals 1 & 2 are used for signifying chamfers in clockwise order.
