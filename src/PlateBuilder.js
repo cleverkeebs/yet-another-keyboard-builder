@@ -21,6 +21,7 @@ import { StabilizerAlpsAEK } from './cutouts/StabilizerAlpsAEK'
 import { StabilizerAlpsAT101 } from './cutouts/StabilizerAlpsAT101'
 import { StabilizerECTopreOEM } from './cutouts/StabilizerECTopreOEM'
 import { StabilizerECTopreDeskeys } from './cutouts/StabilizerECTopreDeskeys'
+import { StabilizerDynaCapClassic } from './cutouts/StabilizerDynaCapClassic'
 import { NullGenerator } from './cutouts/NullGenerator'
 
 import { AcousticMXBasic } from './cutouts/AcousticMXBasic'
@@ -105,6 +106,9 @@ export function buildPlate(keysArray, generatorOptions) {
             break;
         case "ec-deskeys":
             stabilizerGenerator = new StabilizerECTopreDeskeys();
+            break;
+        case "dynacap-classic":
+            stabilizerGenerator = new StabilizerDynaCapClassic();
             break;
         case "none":
             stabilizerGenerator = new NullGenerator();
