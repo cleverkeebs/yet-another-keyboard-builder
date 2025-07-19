@@ -101,7 +101,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
 
             model = {
                 paths: {
-                    path0: new makerjs.paths.Arc(points[0], points[0], filletMain, false, true),
+                    path0: new makerjs.paths.Arc(points[0], points[1], filletMain, false, true),
                     path1: new makerjs.paths.Line(points[1], points[2]),
                     path2: new makerjs.paths.Arc(points[2], points[3], filletTop1, false, false),
                     path3: new makerjs.paths.Arc(points[3], points[4], filletTop2, false, true),
