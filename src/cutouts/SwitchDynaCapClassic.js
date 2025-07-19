@@ -44,7 +44,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
 
             model = {
                 models: {
-                    cutout1u: new makerjs.models.RoundRectangle(width1u, height1u, fillet1u)
+                    cutout1u: new makerjs.models.RoundRectangle(width1u.toNumber(), height1u.toNumber(), fillet1u.toNumber())
                 }
             }
         }
@@ -52,47 +52,68 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
         // 2u housing
         else {
             points = [
-                [-16.07544, 5.77544],
-                [-12.92416, 5.77544],
-                [-12.92416, 7.02760],
-                [12.92416, 7.02760],
-                [12.92416, 5.77544],
-                [16.07544, 5.77544],
-                [16.07544, -4.67544],
-                [12.63119, -4.67544],
-                [12.63119, -7.01191],
-                [-12.63119, -7.01191],
-                [-12.63119, -4.67544],
-                [-16.07544, -4.67544]
+                [-16.07544, 4.35044],
+                [-14.65044, 5.77544],
+                [-13.78483, 5.77544],
+                [-12.92416, 6.35572],
+                [-11.92762, 7.02760],
+                [11.92762, 7.02760],
+                [12.92416, 6.35572],
+                [13.78483, 5.77544],
+                [14.65044, 5.77544],
+                [16.07544, 4.35044],
+                [16.07544, -3.25044],
+                [14.65044, -4.67544],
+                [14.24640, -4.67544],
+                [12.63119, -5.79500],
+                [10.87550, -7.01191],
+                [-10.87550, -7.01191],
+                [-12.63118, -5.79499],
+                [-14.24640, -4.67544],
+                [-14.65044, -4.67544],
+                [-16.07544, -3.25044]
             ]
+            // points = [
+            //     [-16.07544, 5.77544],
+            //     [-12.92416, 5.77544],
+            //     [-12.92416, 7.02760],
+            //     [12.92416, 7.02760],
+            //     [12.92416, 5.77544],
+            //     [16.07544, 5.77544],
+            //     [16.07544, -4.67544],
+            //     [12.63119, -4.67544],
+            //     [12.63119, -7.01191],
+            //     [-12.63119, -7.01191],
+            //     [-12.63119, -4.67544],
+            //     [-16.07544, -4.67544]
+            // ]
 
             mountingPointLeft = [-16.5, -7.25000]
             mountingPointRight = [16.5, -7.25000]
 
-            // model = {
-            //     paths: {
-            //         lineTopLeft: new makerjs.paths.Line(topLeft1, topLeft2),
-            //         lineTop: new makerjs.paths.Line(topLeft2, topRight1),
-            //         lineTopRight: new makerjs.paths.Line(topRight1, topRight2),
-            //         lineRight: new makerjs.paths.Line(topRight2, bottomRight1),
-            //         lineBottomRight: new makerjs.paths.Line(bottomRight1, bottomRight2),
-            //         lineBottom: new makerjs.paths.Line(bottomRight2, bottomLeft1),
-            //         lineBottomLeft: new makerjs.paths.Line(bottomLeft1, bottomLeft2),
-            //         lineLeft: new makerjs.paths.Line(bottomLeft2, topLeft1),
-            //         mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, .8) : null,
-            //         mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
-            //     }
-            // }
 
             model = {
                 paths: {
-                    path1: new makerjs.paths.Line()
-                }
-            }
-
-            model = {
-                models: {
-                    outline: new makerjs.models.ConnectTheDots(false, points),
+                    path0: new makerjs.paths.Arc(points[0], points[0], [-16.07544, 5.77544]),
+                    path1: new makerjs.paths.Line(points[1], points[2]),
+                    path2: new makerjs.paths.Arc(points[2], points[3], [-13.78483, 6.70385]),
+                    path3: new makerjs.paths.Arc(points[3], points[4], [-11.92762, 5.95261]),
+                    path4: new makerjs.paths.Line(points[4], points[5]),
+                    path5: new makerjs.paths.Arc(points[5], points[6], [11.92762, 5.95261]),
+                    path6: new makerjs.paths.Arc(points[6], points[7], [13.78483, 6.70385]),
+                    path7: new makerjs.paths.Line(points[7], points[8]),
+                    path8: new makerjs.paths.Arc(points[8], points[9], [16.07544, 5.77544]),
+                    path9: new makerjs.paths.Line(points[9], points[10]),
+                    path10: new makerjs.paths.Arc(points[10], points[11], [16.07544, -4.67544]),
+                    path11: new makerjs.paths.Line(points[11], points[12]),
+                    path12: new makerjs.paths.Arc(points[12], points[13], [14.24640, -6.40037]),
+                    path13: new makerjs.paths.Arc(points[13], points[14], [10.87550, -5.13696]),
+                    path14: new makerjs.paths.Line(points[14], points[15]),
+                    path15: new makerjs.paths.Arc(points[15], points[16], [-10.87550, -5.13696]),
+                    path16: new makerjs.paths.Arc(points[16], points[17], [-14.24640, -6.40037]),
+                    path17: new makerjs.paths.Line(points[17], points[18]),
+                    path18: new makerjs.paths.Arc(points[18], points[19], [-16.07544, -4.67544]),
+                    path19: new makerjs.paths.Line(points[19], points[0]),
                     mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, .8) : null,
                     mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
                 }
