@@ -18,7 +18,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
     generate(key, generatorOptions) {
         // EC switch cutouts are chamfered instead of filleted. Numerals 1 & 2 are used for signifying chamfers in clockwise order.
         let points
-        let plusHalfWidth, minsHalfWidth, plusHalfHeight, minsHalfHeight, mountingPointLeft, mountingPointRight
+        let mountingPointLeft, mountingPointRight
         var model
 
         // 1u housing
@@ -30,26 +30,23 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
 
         // 1u housing
         if (shouldUse1uHousing) {
-            plusHalfWidth = width1u.dividedBy(new Decimal("2"))
-            minsHalfWidth = width1u.dividedBy(new Decimal("-2"))
-            plusHalfHeight = height1u.dividedBy(new Decimal("2"))
-            minsHalfHeight = height1u.dividedBy(new Decimal("-2"))
+            // plusHalfWidth = width1u.dividedBy(new Decimal("2"))
+            // minsHalfWidth = width1u.dividedBy(new Decimal("-2"))
+            // plusHalfHeight = height1u.dividedBy(new Decimal("2"))
+            // minsHalfHeight = height1u.dividedBy(new Decimal("-2"))
 
-            points = [
-                [minsHalfWidth.toNumber(), plusHalfHeight.toNumber()],
-                [plusHalfWidth.toNumber(), plusHalfHeight.toNumber()],
-                [plusHalfWidth.toNumber(), minsHalfHeight.toNumber()],
-                [minsHalfWidth.toNumber(), minsHalfHeight.toNumber()]
-            ]
+            // points = [
+            //     [minsHalfWidth.toNumber(), plusHalfHeight.toNumber()],
+            //     [plusHalfWidth.toNumber(), plusHalfHeight.toNumber()],
+            //     [plusHalfWidth.toNumber(), minsHalfHeight.toNumber()],
+            //     [minsHalfWidth.toNumber(), minsHalfHeight.toNumber()]
+            // ]
 
             model = {
                 models: {
-                    outline: new makerjs.models.ConnectTheDots(false, points)
+                    cutout1u: new makerjs.models.RoundRectangle(width1u, height1u, fillet1u)
                 }
             }
-
-            // Apply the fillet radius (replace chamfer1u with fillet)
-            makerjs.path.fillet(model.models.outline, fillet1u.toNumber());
         }
 
         // 2u housing
@@ -86,6 +83,12 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
             //         mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
             //     }
             // }
+
+            model = {
+                paths: {
+                    path1: new makerjs.paths.Line()
+                }
+            }
 
             model = {
                 models: {
