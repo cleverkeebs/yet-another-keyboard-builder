@@ -58,7 +58,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
             }
 
             // Apply the fillet radius (replace chamfer1u with fillet)
-            makerjs.path.combineFillet(model.models.outline, fillet1u.toNumber());
+            // makerjs.path.combineFillet(model.models.outline, fillet1u.toNumber());
         }
 
         // 2u housing
@@ -79,21 +79,20 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
 
             mountingPointLeft = [plusHalfWidth.plus(0.1512).toNumber(), minsHalfHeight.minus(0.1469).toNumber()]
             mountingPointRight = [minsHalfWidth.minus(0.1512).toNumber(), minsHalfHeight.minus(0.1469).toNumber()]
-        }
 
-
-        model = {
-            paths: {
-                lineTopLeft: new makerjs.paths.Line(topLeft1, topLeft2),
-                lineTop: new makerjs.paths.Line(topLeft2, topRight1),
-                lineTopRight: new makerjs.paths.Line(topRight1, topRight2),
-                lineRight: new makerjs.paths.Line(topRight2, bottomRight1),
-                lineBottomRight: new makerjs.paths.Line(bottomRight1, bottomRight2),
-                lineBottom: new makerjs.paths.Line(bottomRight2, bottomLeft1),
-                lineBottomLeft: new makerjs.paths.Line(bottomLeft1, bottomLeft2),
-                lineLeft: new makerjs.paths.Line(bottomLeft2, topLeft1),
-                mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, .8) : null,
-                mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
+            model = {
+                paths: {
+                    lineTopLeft: new makerjs.paths.Line(topLeft1, topLeft2),
+                    lineTop: new makerjs.paths.Line(topLeft2, topRight1),
+                    lineTopRight: new makerjs.paths.Line(topRight1, topRight2),
+                    lineRight: new makerjs.paths.Line(topRight2, bottomRight1),
+                    lineBottomRight: new makerjs.paths.Line(bottomRight1, bottomRight2),
+                    lineBottom: new makerjs.paths.Line(bottomRight2, bottomLeft1),
+                    lineBottomLeft: new makerjs.paths.Line(bottomLeft1, bottomLeft2),
+                    lineLeft: new makerjs.paths.Line(bottomLeft2, topLeft1),
+                    mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, .8) : null,
+                    mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
+                }
             }
         }
 
