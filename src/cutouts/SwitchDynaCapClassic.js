@@ -17,6 +17,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
 
     generate(key, generatorOptions) {
         // EC switch cutouts are chamfered instead of filleted. Numerals 1 & 2 are used for signifying chamfers in clockwise order.
+        let topLeft, topRight, bottomRight, bottomLeft
         let plusHalfWidth, minsHalfWidth, plusHalfHeight, minsHalfHeight, topLeft1, topLeft2, topRight1, topRight2, bottomRight1, bottomRight2, bottomLeft1, bottomLeft2, mountingPointLeft, mountingPointRight
         var model
 
