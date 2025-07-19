@@ -165,8 +165,9 @@ function App() {
                   <option value="mx-spec">Cherry MX Spec</option>
                   <option value="alps-aek">Alps AEK</option>
                   <option value="alps-at101">Alps AT101</option>
-                  <option value="ec-oem">Topre/EC OEM</option>
-                  <option value="ec-deskeys">Topre/EC Deskeys</option>
+                  <option value="ec-oem">EC/Topre OEM</option>
+                  <option value="ec-deskeys">EC/Deskeys</option>
+                  <option value="dynacap-classic">EC/DynaCap</option>
                   <option value="none">None</option>
 
                 </Form.Select>
