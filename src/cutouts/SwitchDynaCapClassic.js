@@ -34,7 +34,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
         const chamfer2uBottomX = new Decimal("3")
         const chamfer2uBottomY = new Decimal("2")
 
-        const shouldUse1uHousing = !((key.width >= 2 && key.width <= 3) || (key.height >=2 && key.height <= 3))
+        const shouldUse1uHousing = !((key.width >= 2 && key.width <= 3) || (key.height >= 2 && key.height <= 3))
 
         // 1u housing
         if (shouldUse1uHousing) {
@@ -44,16 +44,16 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
             minsHalfHeight = height1u.dividedBy(new Decimal("-2"))
 
             points = [
-              [minsHalfWidth.toNumber(), plusHalfHeight.toNumber()],
-              [plusHalfWidth.toNumber(), plusHalfHeight.toNumber()],
-              [plusHalfWidth.toNumber(), minsHalfHeight.toNumber()],
-              [minsHalfWidth.toNumber(), minsHalfHeight.toNumber()]
+                [minsHalfWidth.toNumber(), plusHalfHeight.toNumber()],
+                [plusHalfWidth.toNumber(), plusHalfHeight.toNumber()],
+                [plusHalfWidth.toNumber(), minsHalfHeight.toNumber()],
+                [minsHalfWidth.toNumber(), minsHalfHeight.toNumber()]
             ]
 
             model = {
-              models: {
-                outline: makerjs.model.connectTheDots(false, points)
-              }
+                models: {
+                    outline: new makerjs.models.ConnectTheDots(false, points)
+                }
             }
 
             // Apply the fillet radius (replace chamfer1u with fillet)
@@ -62,33 +62,42 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
 
         // 2u housing
         else {
-            plusHalfWidth = width2u.dividedBy(new Decimal("2"))
-            minsHalfWidth = width2u.dividedBy(new Decimal("-2"))
-            plusHalfHeight = height2u.dividedBy(new Decimal("2"))
-            minsHalfHeight = height2u.dividedBy(new Decimal("-2"))
+            points = [
+                [-16.07544, 5.77544],
+                [-12.92416, 5.77544],
+                [-12.92416, 7.02760],
+                [12.92416, 7.02760],
+                [12.92416, 5.77544],
+                [16.07544, 5.77544],
+                [16.07544, -4.67544],
+                [12.63119, -4.67544],
+                [12.63119, -7.01191],
+                [-12.63119, -7.01191],
+                [-12.63119, -4.67544],
+                [-16.07544, -4.67544]
+            ]
 
-            topLeft1 = [minsHalfWidth.toNumber(), plusHalfHeight.minus(chamfer2uTop).toNumber()]
-            topLeft2 = [minsHalfWidth.plus(chamfer2uTop).toNumber(), plusHalfHeight.toNumber()]
-            topRight1 = [plusHalfWidth.minus(chamfer2uTop).toNumber(), plusHalfHeight.toNumber()]
-            topRight2 = [plusHalfWidth.toNumber(), plusHalfHeight.minus(chamfer2uTop).toNumber()]
-            bottomRight1 = [plusHalfWidth.toNumber(), minsHalfHeight.plus(chamfer2uBottomY).toNumber()]
-            bottomRight2 = [plusHalfWidth.minus(chamfer2uBottomX).toNumber(), minsHalfHeight.toNumber()]
-            bottomLeft1 = [minsHalfWidth.plus(chamfer2uBottomX).toNumber(), minsHalfHeight.toNumber()]
-            bottomLeft2 = [minsHalfWidth.toNumber(), minsHalfHeight.plus(chamfer2uBottomY).toNumber()]
+            mountingPointLeft = [-16.5, -7.25000]
+            mountingPointRight = [16.5, -7.25000]
 
-            mountingPointLeft = [plusHalfWidth.plus(0.1512).toNumber(), minsHalfHeight.minus(0.1469).toNumber()]
-            mountingPointRight = [minsHalfWidth.minus(0.1512).toNumber(), minsHalfHeight.minus(0.1469).toNumber()]
+            // model = {
+            //     paths: {
+            //         lineTopLeft: new makerjs.paths.Line(topLeft1, topLeft2),
+            //         lineTop: new makerjs.paths.Line(topLeft2, topRight1),
+            //         lineTopRight: new makerjs.paths.Line(topRight1, topRight2),
+            //         lineRight: new makerjs.paths.Line(topRight2, bottomRight1),
+            //         lineBottomRight: new makerjs.paths.Line(bottomRight1, bottomRight2),
+            //         lineBottom: new makerjs.paths.Line(bottomRight2, bottomLeft1),
+            //         lineBottomLeft: new makerjs.paths.Line(bottomLeft1, bottomLeft2),
+            //         lineLeft: new makerjs.paths.Line(bottomLeft2, topLeft1),
+            //         mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, .8) : null,
+            //         mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
+            //     }
+            // }
 
             model = {
-                paths: {
-                    lineTopLeft: new makerjs.paths.Line(topLeft1, topLeft2),
-                    lineTop: new makerjs.paths.Line(topLeft2, topRight1),
-                    lineTopRight: new makerjs.paths.Line(topRight1, topRight2),
-                    lineRight: new makerjs.paths.Line(topRight2, bottomRight1),
-                    lineBottomRight: new makerjs.paths.Line(bottomRight1, bottomRight2),
-                    lineBottom: new makerjs.paths.Line(bottomRight2, bottomLeft1),
-                    lineBottomLeft: new makerjs.paths.Line(bottomLeft1, bottomLeft2),
-                    lineLeft: new makerjs.paths.Line(bottomLeft2, topLeft1),
+                models: {
+                    outline: new makerjs.models.ConnectTheDots(false, points),
                     mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, .8) : null,
                     mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
                 }
