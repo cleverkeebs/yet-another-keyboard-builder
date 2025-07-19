@@ -23,7 +23,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
         // 1u housing
         const width1u = new Decimal("14.7")
         const height1u = new Decimal("14.1")
-        const chamfer1u = new Decimal("2.075")
+        const fillet1u = new Decimal("2.075")
 
 
         // 2u housing
@@ -42,14 +42,22 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
             plusHalfHeight = height1u.dividedBy(new Decimal("2"))
             minsHalfHeight = height1u.dividedBy(new Decimal("-2"))
 
-            topLeft1 = [minsHalfWidth.toNumber(), plusHalfHeight.minus(chamfer1u).toNumber()]
-            topLeft2 = [minsHalfWidth.plus(chamfer1u).toNumber(), plusHalfHeight.toNumber()]
-            topRight1 =[plusHalfWidth.minus(chamfer1u).toNumber(), plusHalfHeight.toNumber()]
-            topRight2 = [plusHalfWidth.toNumber(), plusHalfHeight.minus(chamfer1u).toNumber()]
-            bottomRight1 = [plusHalfWidth.toNumber(), minsHalfHeight.plus(chamfer1u).toNumber()]
-            bottomRight2 = [plusHalfWidth.minus(chamfer1u).toNumber(), minsHalfHeight.toNumber()]
-            bottomLeft1 = [minsHalfWidth.plus(chamfer1u).toNumber(), minsHalfHeight.toNumber()]
-            bottomLeft2 = [minsHalfWidth.toNumber(), minsHalfHeight.plus(chamfer1u).toNumber()]
+            topLeft = [minsHalfWidth.toNumber(), plusHalfHeight.toNumber()]
+            topRight = [plusHalfWidth.toNumber(), plusHalfHeight.toNumber()]
+            bottomRight = [plusHalfWidth.toNumber(), minsHalfHeight.toNumber()]
+            bottomLeft = [minsHalfWidth.toNumber(), minsHalfHeight.toNumber()]
+
+            model = {
+                paths: {
+                    lineTop: new makerjs.paths.Line(topLeft, topRight),
+                    lineRight: new makerjs.paths.Line(topRight, bottomRight),
+                    lineBottom: new makerjs.paths.Line(bottomRight, bottomLeft),
+                    lineLeft: new makerjs.paths.Line(bottomLeft, topLeft)
+                }
+            }
+
+            // Apply the fillet radius (replace chamfer1u with fillet)
+            makerjs.path.combineFillet(model.models.outline, fillet1u.toNumber());
         }
 
         // 2u housing
