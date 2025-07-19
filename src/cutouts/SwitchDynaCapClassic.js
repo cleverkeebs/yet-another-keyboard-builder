@@ -75,6 +75,11 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
                 [-14.65044, -4.67544],
                 [-16.07544, -3.25044]
             ]
+            const filletMain = 1.425
+            const filletTop1 = 0.92841
+            const filletTop2 = 1.07499
+            const filletBottom1 = 1.72493
+            const filletBottom2 = 1.87495
             // points = [
             //     [-16.07544, 5.77544],
             //     [-12.92416, 5.77544],
@@ -96,25 +101,25 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
 
             model = {
                 paths: {
-                    path0: new makerjs.paths.Arc(points[0], points[0], [-16.07544, 5.77544]),
+                    path0: new makerjs.paths.Arc(points[0], points[0], filletMain, false, true),
                     path1: new makerjs.paths.Line(points[1], points[2]),
-                    path2: new makerjs.paths.Arc(points[2], points[3], [-13.78483, 6.70385]),
-                    path3: new makerjs.paths.Arc(points[3], points[4], [-11.92762, 5.95261]),
+                    path2: new makerjs.paths.Arc(points[2], points[3], filletTop1, false, false),
+                    path3: new makerjs.paths.Arc(points[3], points[4], filletTop2, false, true),
                     path4: new makerjs.paths.Line(points[4], points[5]),
-                    path5: new makerjs.paths.Arc(points[5], points[6], [11.92762, 5.95261]),
-                    path6: new makerjs.paths.Arc(points[6], points[7], [13.78483, 6.70385]),
+                    path5: new makerjs.paths.Arc(points[5], points[6], filletTop2, false, true),
+                    path6: new makerjs.paths.Arc(points[6], points[7], filletTop1, false, false),
                     path7: new makerjs.paths.Line(points[7], points[8]),
-                    path8: new makerjs.paths.Arc(points[8], points[9], [16.07544, 5.77544]),
+                    path8: new makerjs.paths.Arc(points[8], points[9], filletMain, false, true),
                     path9: new makerjs.paths.Line(points[9], points[10]),
-                    path10: new makerjs.paths.Arc(points[10], points[11], [16.07544, -4.67544]),
+                    path10: new makerjs.paths.Arc(points[10], points[11], filletMain, false, true),
                     path11: new makerjs.paths.Line(points[11], points[12]),
-                    path12: new makerjs.paths.Arc(points[12], points[13], [14.24640, -6.40037]),
-                    path13: new makerjs.paths.Arc(points[13], points[14], [10.87550, -5.13696]),
+                    path12: new makerjs.paths.Arc(points[12], points[13], filletBottom1, false, false),
+                    path13: new makerjs.paths.Arc(points[13], points[14], filletBottom2, false, true),
                     path14: new makerjs.paths.Line(points[14], points[15]),
-                    path15: new makerjs.paths.Arc(points[15], points[16], [-10.87550, -5.13696]),
-                    path16: new makerjs.paths.Arc(points[16], points[17], [-14.24640, -6.40037]),
+                    path15: new makerjs.paths.Arc(points[15], points[16], filletBottom2, false, true),
+                    path16: new makerjs.paths.Arc(points[16], points[17], filletBottom1, false, false),
                     path17: new makerjs.paths.Line(points[17], points[18]),
-                    path18: new makerjs.paths.Arc(points[18], points[19], [-16.07544, -4.67544]),
+                    path18: new makerjs.paths.Arc(points[18], points[19], filletMain, false, true),
                     path19: new makerjs.paths.Line(points[19], points[0]),
                     mountingHoleLeft: mountingPointLeft !== undefined ? new makerjs.paths.Circle(mountingPointLeft, .8) : null,
                     mountingHoleRight: mountingPointRight !== undefined ? new makerjs.paths.Circle(mountingPointRight, .8) : null
