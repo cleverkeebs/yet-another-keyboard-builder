@@ -42,7 +42,7 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
             //     [minsHalfWidth.toNumber(), minsHalfHeight.toNumber()]
             // ]
             const cutout1u = new makerjs.models.RoundRectangle(width1u.toNumber(), height1u.toNumber(), fillet1u.toNumber())
-            cutout1u.origin = [width1u.dividedBy(new Decimal("-2")),toNumber(), height1u.dividedBy(new Decimal("-2")).toNumber()]
+            cutout1u.origin = [width1u.dividedBy(new Decimal("-2")).toNumber(), height1u.dividedBy(new Decimal("-2")).toNumber()]
 
             model = {
                 models: {
