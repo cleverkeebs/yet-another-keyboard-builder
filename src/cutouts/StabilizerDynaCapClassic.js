@@ -3,9 +3,7 @@ import makerjs from 'makerjs'
 import { CutoutGenerator } from './CutoutGenerator'
 
 /**
- * EC stabalizer cutouts for Deskeys housings
- * Dimensions [width * height] of spacebar stabilizer housing cutouts are as follows:
- * Spacebar stab housing: 13.4mm * 13.53mm
+ * EC stabalizer cutouts for DynaCap Classic stabilizer housings
  */
 
 export class StabilizerDynaCapClassic extends CutoutGenerator {
@@ -36,15 +34,15 @@ export class StabilizerDynaCapClassic extends CutoutGenerator {
             return null
         }
 
-        const width = new Decimal("13.6")
-        const height = new Decimal("13.9")
-        const fillet = new Decimal("1.07544")
-        const stabCutout = new makerjs.models.RoundRectangle(width.toNumber(), height.toNumber(), fillet.toNumber())
-        stabCutout.origin = [width.dividedBy(new Decimal("-2")).toNumber(), height.dividedBy(new Decimal("-2")).toNumber()]
+        const stabWidth = new Decimal("13.6")
+        const stabHeight = new Decimal("13.9")
+        const stabFillet = new Decimal("1.07544")
+        const stabCutout = new makerjs.models.RoundRectangle(stabWidth.toNumber(), stabHeight.toNumber(), stabFillet.toNumber())
+        stabCutout.origin = [stabWidth.dividedBy(new Decimal("-2")).toNumber(), stabHeight.dividedBy(new Decimal("-2")).toNumber()]
 
         let singleCutout = {
             models: {
-                stabCutout: new makerjs.models.RoundRectangle(width, height, fillet)
+                stabCutout: stabCutout
             }
         }
 
