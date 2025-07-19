@@ -26,14 +26,6 @@ export class SwitchDynaCapClassic extends CutoutGenerator {
         const height1u = new Decimal("14.1")
         const fillet1u = new Decimal("2.075")
 
-
-        // 2u housing
-        const width2u = new Decimal("32.1")
-        const height2u = new Decimal("14.1")
-        const chamfer2uTop = new Decimal("1")
-        const chamfer2uBottomX = new Decimal("3")
-        const chamfer2uBottomY = new Decimal("2")
-
         const shouldUse1uHousing = !((key.width >= 2 && key.width <= 3) || (key.height >= 2 && key.height <= 3))
 
         // 1u housing
